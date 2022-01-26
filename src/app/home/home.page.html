@@ -1,20 +1,42 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card style="margin: 10%;" >
+    <ion-card-header>
+      <ion-card-title>Bienvenido a iBiblioteca!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        iBiblioteca es una aplicación desarrollada con Ionic que permite gestionar 
+        una biblioteca de un centro educativo.</ion-text><br>
+      <ion-text color="dark">  
+        Para acceder a la biblioteca pulsa en el siguiente botón:
+      </ion-text>
+    </ion-card-content>
+    <ion-button expand="block" color="white" style="color: black;  text-transform: none;" fill="clear">
+      <ion-icon slot="start" name="school"></ion-icon>
+      Acceso a iBiblioteca
+    </ion-button>
+  </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card style="margin: 10%;" >
+    <ion-card-header>
+      <ion-card-title>Información sobre el autor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        Aplicación desarrollada por Cristina Blanco Martín.</ion-text>
+    </ion-card-content>
+    <ion-button expand="block" color="white" style="color: black; text-transform: none;" fill="clear" [routerLink]="['/autor']">
+      <ion-icon slot="start" name="person"></ion-icon>
+      Consultar información
+    </ion-button>
+  </ion-card>
+
 </ion-content>
