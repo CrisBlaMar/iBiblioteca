@@ -1,20 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Biblioteca</ion-title>
+    <ion-title>iBiblioteca</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <div *ngFor="let resul of mostrarLibro">
-    <button ion-item>
+  <!--No consigo poner bien la estructura y creo que es por los button-->
+  <button ion-item *ngFor="let resul of libro">
+    <ion-item >
       <ion-thumbnail slot="start">
-        <img [src]="resul">
+        <img src="https://covers.openlibrary.org/b/isbn/{{resul.isbn[2]}}-M.jpg">
       </ion-thumbnail>
-      <ion-label>Item Thumbnail</ion-label>
+      <ion-label>
+        <ion-text><strong>{{resul.title}}</strong></ion-text><br>
+        <ion-text><p>Autor:{{resul.author_name}}</p></ion-text><br>
+        <ion-text><p>Año:{{resul.first_publish_year}}</p></ion-text>
+      </ion-label>
       <ion-icon item-end name="chevron-forward-outline"></ion-icon>
-    </button>
-  </div>
+    </ion-item>
+  </button>
 
 </ion-content>
 
