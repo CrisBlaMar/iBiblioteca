@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card style="margin: 10%;" >
+  <ion-card>
     <ion-card-header>
       <ion-card-title>Bienvenido a iBiblioteca!</ion-card-title>
     </ion-card-header>
@@ -19,13 +19,13 @@
         Para acceder a la biblioteca pulsa en el siguiente botón:
       </ion-text>
     </ion-card-content>
-    <ion-button expand="block" color="white" style="color: black;  text-transform: none;" fill="clear">
+    <ion-button expand="block" color="white"  fill="clear">
       <ion-icon slot="start" name="school"></ion-icon>
       Acceso a iBiblioteca
     </ion-button>
   </ion-card>
 
-  <ion-card style="margin: 10%;" >
+  <ion-card>
     <ion-card-header>
       <ion-card-title>Información sobre el autor</ion-card-title>
     </ion-card-header>
@@ -33,7 +33,7 @@
       <ion-text color="dark">
         Aplicación desarrollada por Cristina Blanco Martín.</ion-text>
     </ion-card-content>
-    <ion-button expand="block" color="white" style="color: black; text-transform: none;" fill="clear" [routerLink]="['/autor']">
+    <ion-button expand="block" color="white"  fill="clear" routerLink='/autor'>
       <ion-icon slot="start" name="person"></ion-icon>
       Consultar información
     </ion-button>
