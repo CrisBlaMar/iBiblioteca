@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Libros } from '../interfaces/libros.interfaces';
+import { BibliotecaServices } from './bibliotecaService.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BibliotecaPage implements OnInit {
 
-  constructor() { }
+  
+  
+
+  constructor(private biblioServices : BibliotecaServices) { }
+
+  get mostrarLibro(){
+    return this.biblioServices.resul;
+  }
 
   ngOnInit() {
   }

@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>biblioteca</ion-title>
+    <ion-title>Biblioteca</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <div *ngFor="let resul of mostrarLibro">
+    <button ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="resul">
+      </ion-thumbnail>
+      <ion-label>Item Thumbnail</ion-label>
+      <ion-icon item-end name="chevron-forward-outline"></ion-icon>
+    </button>
+  </div>
+
 </ion-content>
+
+
