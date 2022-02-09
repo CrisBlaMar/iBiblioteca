@@ -13,13 +13,18 @@ export class DetallelibroPage implements OnInit {
   constructor(private biblioServices : BibliotecaServices,
     private activeRoute: ActivatedRoute) { }
 
-  libro : Libro;
+  libro: Libro;
+  //cuando no ha cargado la página 
+  mostrar: boolean = false;
 
   obtenerLibro(){
-    this.biblioServices.obtenerdetallelibro(this.activeRoute.snapshot.params["isbn"])
+    const isbn : string = this.activeRoute.snapshot.params['isbn'];
+    this.biblioServices.obtenerdetallelibro(isbn)
     .subscribe({
-      next: res =>{
-        this.libro = res.docs[0];
+      next: resp =>{
+        this.libro = resp.docs[0];
+        //cuando ya ha cargado la página, nos lo pone a true y nos lo muestra
+        this.mostrar = true;
       },
       error: err =>{
         console.log(err);

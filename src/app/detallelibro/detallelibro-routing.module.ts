@@ -4,8 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetallelibroPage } from './detallelibro.page';
 
 const routes: Routes = [
+
   {
-    path: '',
+    path: 'isbn',
     component: DetallelibroPage
   }
 ];

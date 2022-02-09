@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>iBiblioteca</ion-title>
+    <ion-searchbar placeholder="Buscar libro"
+    animated debounce="700" 
+    [value]= "buscador"
+    (ionChange)="buscar( $event)"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
+<!-- -->
 <ion-content>
   <!--No consigo poner bien la estructura y creo que es por los button-->
-  <button ion-item *ngFor="let resul of libro">
-    <ion-item >
+  
+    <ion-item button *ngFor="let resul of libro" [routerLink]="['./detallelibro', resul.isbn[2]]">
       <ion-thumbnail slot="start">
         <img src="https://covers.openlibrary.org/b/isbn/{{resul.isbn[2]}}-M.jpg">
       </ion-thumbnail>
@@ -18,7 +23,8 @@
       </ion-label>
       <ion-icon item-end name="chevron-forward-outline"></ion-icon>
     </ion-item>
-  </button>
+    
+  
 
 </ion-content>
 
