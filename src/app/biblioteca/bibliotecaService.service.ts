@@ -11,7 +11,6 @@ export class BibliotecaServices {
 
     
     private urlApi: string = "http://openlibrary.org/search.json";
-    private urlApiDetalleLibro : string = "http://openlibrary.org/search.json?isbn="
     libros: Libro [] = [];
 
     
@@ -24,8 +23,12 @@ export class BibliotecaServices {
         
     }
 
-    obtenerdetallelibro(libro: String){
-      return this.httpClient.get<SearchLibros>(`${this.urlApiDetalleLibro}${libro}`);
+    obtenerdetallelibro(isbn: string){
+      const params: HttpParams = new HttpParams()
+      .set('isbn',isbn)
+      .set('limit',1)
+      const url= `${this.urlApi}`
+      return this.httpClient.get<SearchLibros>(url, {params: params});
 
     }
     

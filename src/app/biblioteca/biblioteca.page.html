@@ -5,16 +5,15 @@
     animated debounce="700" 
     [value]= "buscador"
     (ionChange)="buscar( $event)"
-    ></ion-searchbar>
+    ><ion-item><ion-icon button (click)="barcode()"  name="barcode" style="zoom:2.0;"></ion-icon></ion-item></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <!-- -->
 <ion-content>
-  <!--No consigo poner bien la estructura y creo que es por los button-->
-  
-    <ion-item button *ngFor="let resul of libro" [routerLink]="['./detallelibro', resul.isbn[2]]">
+ 
+    <ion-item button *ngFor="let resul of libro" [routerLink]="['/detallelibro', resul.isbn[0]]">
       <ion-thumbnail slot="start">
-        <img src="https://covers.openlibrary.org/b/isbn/{{resul.isbn[2]}}-M.jpg">
+        <img src="https://covers.openlibrary.org/b/isbn/{{resul.cover_i}}-M.jpg">
       </ion-thumbnail>
       <ion-label>
         <ion-text><strong>{{resul.title}}</strong></ion-text><br>
@@ -24,8 +23,13 @@
       <ion-icon item-end name="chevron-forward-outline"></ion-icon>
     </ion-item>
     
-  
+    <div *ngIf="scannedBarCode">
+      <ion-item>
+          Scanned code output: <strong>{{ scannedBarCode["text"] }}</strong>
+      </ion-item>
+      <ion-item>
+          Scanned code output: <strong>{{ scannedBarCode["format"] }}</strong>
+      </ion-item>
+    </div>
 
 </ion-content>
-
-

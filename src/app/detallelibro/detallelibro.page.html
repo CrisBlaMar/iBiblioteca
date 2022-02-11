@@ -5,12 +5,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content fullscreen *ngIf="mostrar">
   <div>
     <ion-card>
-        <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}-M.jpg" alt="">
+        <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}-M.jpg">
       <ion-card-header>
-        <ion-card-title></ion-card-title>
+        <ion-card-title>{{libro.title}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
           <ion-text color="dark">

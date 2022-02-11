@@ -17,22 +17,20 @@ export class DetallelibroPage implements OnInit {
   //cuando no ha cargado la página 
   mostrar: boolean = false;
 
-  obtenerLibro(){
-    const isbn : string = this.activeRoute.snapshot.params['isbn'];
-    this.biblioServices.obtenerdetallelibro(isbn)
-    .subscribe({
-      next: resp =>{
-        this.libro = resp.docs[0];
-        //cuando ya ha cargado la página, nos lo pone a true y nos lo muestra
-        this.mostrar = true;
-      },
-      error: err =>{
-        console.log(err);
-      }
-    })
-  }
+  
 
   ngOnInit() {
-  }
-
+      const isbn : string = this.activeRoute.snapshot.params['isbn'];
+      this.biblioServices.obtenerdetallelibro(isbn)
+      .subscribe({
+        next: resp =>{
+          this.libro = resp.docs[0];
+          //cuando ya ha cargado la página, nos lo pone a true y nos lo muestra
+          this.mostrar = true;
+        },
+        error: err =>{
+          console.log(err);
+        }
+      })
+    }
 }

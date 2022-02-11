@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BibliotecaServices } from './bibliotecaService.service';
 import { Libro } from '../interfaces/libros.interfaces';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-biblioteca',
@@ -13,18 +15,19 @@ export class BibliotecaPage {
   mostrar = false;
   libro: Libro [] = [];
 
-  constructor(private biblioServices : BibliotecaServices) { }
+  encodedData: any;
+  scannedBarCode: {};
+  barcodeScannerOptions: BarcodeScannerOptions;
 
-
-//llamamos al método creado en el servicio y nos subcribimos a él 
- /**  obLibro(){
-    this.biblioServices.obtenerLibros(this.buscador)
-    .subscribe({
-      next: res =>{
-        this.libro = res.docs;
-      }
-    })
-  }*/
+  constructor(private biblioServices : BibliotecaServices, private scanner : BarcodeScanner, private router : Router) { 
+    
+    this.encodedData = "Programming isn't about what you know";
+      
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
+  }
 
   buscar (event){
     const resul: string =  event.detail.value;
@@ -40,6 +43,18 @@ export class BibliotecaPage {
       this.libro = resp.docs;
       this.mostrar = true;
     })
+  }
+
+
+  barcode(){
+    this.scanner.scan()
+    .then(res=>{
+      this.scannedBarCode = res;
+      this.router.navigate(['/detallelibro', res.text])
+    }).catch(err=>{
+      alert(err);
+    })
+
   }
 
  /**  ngOnInit() {
