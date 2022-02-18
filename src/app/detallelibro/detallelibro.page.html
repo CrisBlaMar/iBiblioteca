@@ -26,6 +26,8 @@
               <p><b>Editorial:</b>{{libro.publisher[0]}}</p>
           </ion-text>
       </ion-card-content>
+      <ion-button *ngIf="!favorito" (click)="guardarFav(libro.isbn[0], libro)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button *ngIf="favorito" (click)="eliminarFav(libro.isbn[0])"><ion-icon  name="star"></ion-icon></ion-button>
     </ion-card>
   </div>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BibliotecaServices } from '../biblioteca/bibliotecaService.service';
 import { Libro, SearchLibros } from '../interfaces/libros.interfaces';
+import { LocalStorageServicesService } from '../biblioteca/local-storage-services.service';
 
 @Component({
   selector: 'app-detallelibro',
@@ -11,13 +12,14 @@ import { Libro, SearchLibros } from '../interfaces/libros.interfaces';
 export class DetallelibroPage implements OnInit {
 
   constructor(private biblioServices : BibliotecaServices,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute, private storageservice : LocalStorageServicesService) { }
 
   libro: Libro;
   //cuando no ha cargado la página 
   mostrar: boolean = false;
 
-  
+  favorito : boolean = false;
+  librosFavoritos : Libro [] = [];
 
   ngOnInit() {
       const isbn : string = this.activeRoute.snapshot.params['isbn'];
@@ -33,4 +35,26 @@ export class DetallelibroPage implements OnInit {
         }
       })
     }
+
+    guardarFav (clave : string, valor : any){
+      this.storageservice.guardarFavorito(clave, valor);
+      this.favorito = true;
+    }
+
+    eliminarFav (clave : string){
+      this.storageservice.libroFav(clave);
+      this.favorito = false;
+    }
+
+    marcarComoFavorito (libro : Libro){
+      this.storageservice.libroFav(libro.isbn[0])
+      .then(
+        (resp) =>{
+          this.favorito = true;
+        })
+      .catch((error) =>{
+        this.favorito = false;
+      })
+    }
+
 }

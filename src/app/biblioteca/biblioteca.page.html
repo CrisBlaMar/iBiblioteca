@@ -11,7 +11,7 @@
 <!-- -->
 <ion-content>
  
-    <ion-item button *ngFor="let resul of libro" [routerLink]="['/detallelibro', resul.isbn[0]]">
+    <ion-item button *ngFor="let resul of libro" [routerLink]="['/detallelibro', resul.isbn[2]]">
       <ion-thumbnail slot="start">
         <img src="https://covers.openlibrary.org/b/isbn/{{resul.cover_i}}-M.jpg">
       </ion-thumbnail>
