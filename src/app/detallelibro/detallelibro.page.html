@@ -14,20 +14,49 @@
       </ion-card-header>
       <ion-card-content>
           <ion-text color="dark">
-              <p class="text-dark"><b>Autor:</b>{{libro.author_name}}</p>
+              <p class="text-dark"><b>Autor: </b>{{libro.author_name}}</p>
           </ion-text>
           <ion-text color="dark">
-              <p><b>Año:</b>{{libro.first_publish_year}}</p>
+              <p><b>Año: </b>{{libro.first_publish_year}}</p>
           </ion-text>
           <ion-text color="dark">
-              <p><b>ISBN:</b>{{libro.isbn[0]}}</p>
+              <p><b>ISBN: </b>{{libro.isbn[0]}}</p>
           </ion-text>
           <ion-text color="dark">
-              <p><b>Editorial:</b>{{libro.publisher[0]}}</p>
+              <p><b>Editorial: </b>{{libro.publisher[0]}}</p>
           </ion-text>
       </ion-card-content>
-      <ion-button *ngIf="!favorito" (click)="guardarFav(libro.isbn[0], libro)"><ion-icon name="star-outline"></ion-icon></ion-button>
-      <ion-button *ngIf="favorito" (click)="eliminarFav(libro.isbn[0])"><ion-icon  name="star"></ion-icon></ion-button>
+      <ion-button class="btn ligth large estrella" *ngIf="!favorito" (click)="guardarFav(libro.isbn[0], libro)"><ion-icon name="star-outline"></ion-icon></ion-button>
+      <ion-button class="btn ligth large estrella" *ngIf="favorito" (click)="eliminarFav(libro.isbn[0])"><ion-icon  name="star"></ion-icon></ion-button>
     </ion-card>
   </div>
+
+  <ion-button class="container" type="button" color="primary" (click)="mostrarLibro()">MOSTRAR FAVORITOS</ion-button>
+  <div *ngIf="mos" class="container">
+    <span *ngFor="let libros of librosFavoritos">
+      <ion-card>
+        <img src="http://covers.openlibrary.org/b/isbn/{{libros.isbn[0]}}-M.jpg">
+      <ion-card-header>
+        <ion-card-title>{{libros.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-text color="dark">
+              <p class="text-dark"><b>Autor:</b>{{libros.author_name}}</p>
+          </ion-text>
+          <ion-text color="dark">
+              <p><b>Año:</b>{{libros.first_publish_year}}</p>
+          </ion-text>
+          <ion-text color="dark">
+              <p><b>ISBN:</b>{{libros.isbn[0]}}</p>
+          </ion-text>
+          <ion-text color="dark">
+              <p><b>Editorial:</b>{{libros.publisher[0]}}</p>
+          </ion-text>
+      </ion-card-content>
+    </ion-card>
+    </span>
+  </div>
+
+
+
 </ion-content>

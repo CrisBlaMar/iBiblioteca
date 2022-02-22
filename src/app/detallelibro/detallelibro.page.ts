@@ -12,7 +12,8 @@ import { LocalStorageServicesService } from '../biblioteca/local-storage-service
 export class DetallelibroPage implements OnInit {
 
   constructor(private biblioServices : BibliotecaServices,
-    private activeRoute: ActivatedRoute, private storageservice : LocalStorageServicesService) { }
+    private activeRoute: ActivatedRoute, 
+    private storageservice : LocalStorageServicesService) { }
 
   libro: Libro;
   //cuando no ha cargado la página 
@@ -20,6 +21,8 @@ export class DetallelibroPage implements OnInit {
 
   favorito : boolean = false;
   librosFavoritos : Libro [] = [];
+
+  mos : boolean  = false;
 
   ngOnInit() {
       const isbn : string = this.activeRoute.snapshot.params['isbn'];
@@ -34,6 +37,12 @@ export class DetallelibroPage implements OnInit {
           console.log(err);
         }
       })
+
+
+      this.storageservice.almacenarFav();
+
+
+
     }
 
     guardarFav (clave : string, valor : any){
@@ -42,7 +51,7 @@ export class DetallelibroPage implements OnInit {
     }
 
     eliminarFav (clave : string){
-      this.storageservice.libroFav(clave);
+      this.storageservice.eliminarFavorito(clave);
       this.favorito = false;
     }
 
@@ -50,11 +59,17 @@ export class DetallelibroPage implements OnInit {
       this.storageservice.libroFav(libro.isbn[0])
       .then(
         (resp) =>{
-          this.favorito = true;
+          this.favorito= true;
         })
       .catch((error) =>{
-        this.favorito = false;
+        
       })
+    }
+
+    mostrarLibro (){
+      this.librosFavoritos = this.storageservice._libros;
+      this.mos = true;
+      
     }
 
 }

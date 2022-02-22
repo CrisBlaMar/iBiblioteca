@@ -11,7 +11,7 @@ export class LocalStorageServicesService {
     this.init();
    }
 
-  libros : Libro [] = [];
+  _libros : Libro [] = [];
 
 
   async init(){
@@ -22,12 +22,29 @@ export class LocalStorageServicesService {
     return await this.storage.set(clave, value);
   }
 
-  async borrarStorage (){
-   await this.storage.clear();
+  async eliminarFavorito (clave: string){
+    return await this.storage.remove(clave);
   }
 
   async libroFav (clave: string){
     return await this.storage.get(clave);
   }
+
+  async almacenarFav (){
+
+    this.storage.forEach((key, value) => {
+      this._libros.push(key);
+    });
+    return this._libros;
+  }
+
+  getLibros (){
+    return [...this._libros];
+  }
+
+
+  
+
+
 }
 

@@ -6,8 +6,6 @@ import { BibliotecaPageRoutingModule } from './biblioteca-routing.module';
 import { BibliotecaPage } from './biblioteca.page';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicStorageModule } from '@ionic/storage-angular';
-import { LocalStorageServicesService } from './local-storage-services.service';
 
 
 @NgModule({
